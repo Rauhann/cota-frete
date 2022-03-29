@@ -1,0 +1,208 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentação de API - Frete",
+        "description": "Esta documentação proporciona a interação do usuário com a API",
+        "contact": {
+            "name": "Rauhann Chaves",
+            "email": "rauhann2711@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost"
+        }
+    ],
+    "paths": {
+        "/API": {},
+        "/api/cotacao": {
+            "get": {
+                "tags": [
+                    "Cotação"
+                ],
+                "summary": "Lista os impostos",
+                "description": "Lista os impostos",
+                "operationId": "32f83ead315a75dbbfd5b735a4c90c2f",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "uf": {
+                                                        "type": "string",
+                                                        "example": "PR"
+                                                    },
+                                                    "percentual_cotacao": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": "10.12"
+                                                    },
+                                                    "valor_extra": {
+                                                        "type": "number",
+                                                        "example": "26.31"
+                                                    },
+                                                    "transportadora_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Cotação"
+                ],
+                "summary": "Simula imposto",
+                "description": "Simula imposto",
+                "operationId": "d6b075d081fe2e6a90895eef34ce5e24",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "uf",
+                                    "valor_pedido"
+                                ],
+                                "properties": {
+                                    "uf": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "PR"
+                                    },
+                                    "valor_pedido": {
+                                        "type": "number",
+                                        "format": "number",
+                                        "example": "565.70"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "uf": {
+                                                "type": "string",
+                                                "example": "PR"
+                                            },
+                                            "valor_pedido": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "example": "10.12"
+                                            },
+                                            "transportadora_id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "valor_cotacao": {
+                                                "type": "number",
+                                                "example": "26.31"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cotação"
+                ],
+                "summary": "Cria uma cotação de frete",
+                "description": "Cria uma cotação de frete",
+                "operationId": "c0c14dbee8cea91007660f96100c851d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "uf",
+                                    "percentual_cotacao",
+                                    "valor_extra",
+                                    "transportadora_id"
+                                ],
+                                "properties": {
+                                    "uf": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "PR"
+                                    },
+                                    "percentual_cotacao": {
+                                        "type": "number",
+                                        "format": "number",
+                                        "example": "2.95"
+                                    },
+                                    "valor_extra": {
+                                        "type": "number",
+                                        "format": "number",
+                                        "example": "14.35"
+                                    },
+                                    "transportadora_id": {
+                                        "type": "integer",
+                                        "format": "number",
+                                        "example": "2"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sucesso"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
